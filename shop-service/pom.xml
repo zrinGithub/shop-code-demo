@@ -11,5 +11,8 @@
 
     <artifactId>shop-service</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>shop-service-fastdfs</module>
+    </modules>
 
 </project>
