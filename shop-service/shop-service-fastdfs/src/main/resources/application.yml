@@ -1,0 +1,19 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  application:
+    name: fastdfs-ops
+server:
+  port: 8001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://test:123456@127.0.0.1:8000/eureka/
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+

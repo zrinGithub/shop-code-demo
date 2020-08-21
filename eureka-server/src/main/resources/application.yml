@@ -4,12 +4,12 @@ server:
 eureka:
   instance:
     prefer-ip-address: true #使用IP地址进行服务注册
-    hostname: eureka-serverA
+    hostname: eureka-server
   client:
     register-with-eureka: false #是否将自己注册到eureka 服务端里面，这里本来就是服务不用注册自己
     fetch-registry: false #不需要去检索服务
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ #服务治理的地址，多个地址使用逗号隔开
+      defaultZone: http://test:123456@${eureka.instance.hostname}:${server.port}/eureka/ #服务治理的地址，多个地址使用逗号隔开
 
 spring:
   application:

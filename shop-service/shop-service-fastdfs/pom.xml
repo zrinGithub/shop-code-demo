@@ -13,15 +13,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.zr</groupId>
-            <artifactId>shop-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--参考https://github.com/happyfish100/fastdfs-client-java ，需要先拉项目自己构建-->
+        <!--参考https://github.com/happyfish100/fastdfs-com.zr.fastdfs.client-java ，需要先拉项目自己构建-->
         <dependency>
             <groupId>org.csource</groupId>
             <artifactId>fastdfs-client-java</artifactId>
             <version>1.29-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zr</groupId>
+            <artifactId>shop-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
