@@ -2,6 +2,7 @@ package com.zr.fastdfs.client;
 
 import com.zr.fastdfs.bean.FastDFSFile;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.csource.common.MyException;
 import org.csource.common.NameValuePair;
@@ -11,7 +12,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 
 /**
  * Description:
@@ -89,5 +93,37 @@ public class FastDFSClient {
      */
     public boolean deleteFile(String filePath) throws IOException, MyException {
         return 0 == storageClient.delete_file1(StringUtils.replace(filePath, prefix, ""));
+    }
+
+    /**
+     * 获取下载文件流
+     *
+     * @param filePath 文件完整路径
+     * @return 返回输入流
+     * @throws IOException
+     * @throws MyException
+     */
+    public InputStream downloadFileStream(String filePath) throws IOException, MyException {
+        byte[] content = storageClient.download_file1(filePath);
+        return new ByteArrayInputStream(content);
+    }
+
+    /**
+     * 获取下载文件Base64编码
+     *
+     * @param filePath 文件完整路径
+     * @return 返回BASE64编码
+     * @throws IOException
+     * @throws MyException
+     */
+    public String downloadFileBase64(String filePath) throws IOException, MyException {
+        try (InputStream inputStream = downloadFileStream(filePath)) {
+            byte[] bytes = IOUtils.toByteArray(inputStream);
+            String fileType = StringUtils.substringAfterLast(filePath, ".");
+            String encodeStr = Base64.getEncoder().encodeToString(bytes);
+            return String.format("data:image/%s;base64,", fileType) + encodeStr;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
