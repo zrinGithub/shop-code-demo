@@ -4,7 +4,7 @@ server:
 eureka:
   instance:
     prefer-ip-address: true #使用IP地址进行服务注册
-    hostname: eureka-server
+    hostname: localhost
   client:
     register-with-eureka: false #是否将自己注册到eureka 服务端里面，这里本来就是服务不用注册自己
     fetch-registry: false #不需要去检索服务
