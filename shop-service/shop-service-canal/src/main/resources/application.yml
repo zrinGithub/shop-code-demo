@@ -1,0 +1,21 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: canal-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://test:123456@127.0.0.1:8000/eureka/
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+#canal配置
+canal:
+  client:
+    instances:
+      example:
+        host: 192.168.190.200
+        port: 11111

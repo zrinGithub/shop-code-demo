@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>shop-service-fastdfs</module>
+        <module>shop-service-canal</module>
     </modules>
     <dependencies>
         <!--swagger文档 访问地址 http://localhost:xxx/swagger-ui.html -->
