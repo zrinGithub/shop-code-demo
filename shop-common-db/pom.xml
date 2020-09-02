@@ -11,28 +11,104 @@
 
     <artifactId>shop-common-db</artifactId>
 
+    <properties>
+        <druid.version>1.1.6</druid.version>
+        <mybatisplus.version>3.1.0</mybatisplus.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.zr</groupId>
             <artifactId>shop-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--通用mapper起步依赖-->
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>2.0.4</version>
-        </dependency>
         <!--MySQL数据库驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--mybatis分页插件-->
+        <!-- druid -->
         <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.2.3</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.14</version>
+        </dependency>
+        <!--mybatis plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatisplus.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatisplus-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <!-- 输出目录(默认java.io.tmpdir) -->
+                    <outputDir>d:/tmp/</outputDir>
+                    <!-- 是否覆盖同名文件(默认false) -->
+                    <fileOverride>true</fileOverride>
+                    <!-- mapper.xml 中添加二级缓存配置(默认true) -->
+                    <enableCache>true</enableCache>
+                    <!-- 开发者名称 -->
+                    <author>zhangr</author>
+                    <!-- 数据源配置，( **必配** ) -->
+                    <dataSource>
+                        <driverName>com.mysql.jdbc.Driver</driverName>
+                        <url>jdbc:mysql://localhost:3306/shop-product?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>
+                        <username>root</username>
+                        <password>123456</password>
+                    </dataSource>
+                    <strategy>
+                        <!-- 字段生成策略，四种类型，从名称就能看出来含义
+                        nochange(默认),
+                        underline_to_camel,(下划线转驼峰)
+                        remove_prefix,(去除第一个下划线的前部分，后面保持不变)
+                        remove_prefix_and_camel(去除第一个下划线的前部分，后面转驼峰)
+                        -->
+                        <naming>underline_to_camel</naming>
+                        <!-- ID策略 是LONG还是STRING类型(默认stringtype)-->
+                        <!--<serviceIdType>stringtype</serviceIdType>-->
+                        <!--Entity中的ID生成策略（默认 id_worker）-->
+                        <idGenType>uuid</idGenType>
+                        <!--自定义超类-->
+                        <!--<superServiceClass>net.hyman.base.BaseService</superServiceClass>-->
+                        <!-- 要包含的表 与exclude 二选一配置-->
+                        <include>
+                            <property>shop_category</property>
+                        </include>
+                        <!-- 要排bean除的表 -->
+                        <!--<exclude>-->
+                        <!--<property>order</property>-->
+                        <!--</exclude>-->
+                    </strategy>
+                    <packageInfo>
+                        <!-- 父级包名称，如果不写，下面的service等就需要写全包名(默认com.baomidou) -->
+                        <parent>com.zr.product</parent>
+                        <!--service包名(默认service)-->
+                        <service>service</service>
+                        <!--serviceImpl包名(默认service.impl)-->
+                        <serviceImpl>service.impl</serviceImpl>
+                        <!--entity包名(默认entity)-->
+                        <entity>entity</entity>
+                        <!--mapper包名(默认mapper)-->
+                        <mapper>mapper</mapper>
+                        <!--xml包名(默认mapper.xml)-->
+                        <xml>mapper</xml>
+                    </packageInfo>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.29</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>

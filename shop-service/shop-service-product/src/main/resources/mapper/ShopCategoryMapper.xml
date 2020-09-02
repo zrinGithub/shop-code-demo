@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.product.mapper.ShopCategoryMapper">
+	<resultMap id="BaseResultMap" type="com.zr.product.entity.ShopCategory">
+		<id column="PK_ID" property="pkId" />
+		<result column="CATEGORY_ID" property="categoryId" />
+		<result column="CATEGORY_NAME" property="categoryName" />
+		<result column="CATEGORY_LEVEL" property="categoryLevel" />
+		<result column="PARENT_ID" property="parentId" />
+		<result column="SORT" property="sort" />
+		<result column="REMARK" property="remark" />
+		<result column="CREATE_BY" property="createBy" />
+		<result column="CREATE_TIME" property="createTime" />
+		<result column="MODIFY_BY" property="modifyBy" />
+		<result column="MODIFY_TIME" property="modifyTime" />
+		<result column="CATEGORY_STATUS" property="categoryStatus" />
+		<result column="DELETED_FLAG" property="deletedFlag" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        PK_ID AS pkId, CATEGORY_ID AS categoryId, CATEGORY_NAME AS categoryName, CATEGORY_LEVEL AS categoryLevel, PARENT_ID AS parentId, SORT AS sort, REMARK AS remark, CREATE_BY AS createBy, CREATE_TIME AS createTime, MODIFY_BY AS modifyBy, MODIFY_TIME AS modifyTime, CATEGORY_STATUS AS categoryStatus, DELETED_FLAG AS deletedFlag
+    </sql>
+</mapper>
