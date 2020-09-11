@@ -1,9 +1,11 @@
 package com.zr.product.web;
 
+import com.zr.common.entity.RespVo;
 import com.zr.common.exception.ShopBaseException;
+import com.zr.common.util.SpringBeanUtils;
 import com.zr.product.annotation.ApiLogs;
-import com.zr.product.entity.ShopSku;
 import com.zr.product.service.IShopSkuService;
+import com.zr.product.model.ShopSkuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +33,8 @@ public class ShopSkuController {
     @GetMapping("list")
     @ApiOperation("查询")
     @ApiLogs
-    public List<ShopSku> list() {
-        return shopSkuService.list();
+    public RespVo<List<ShopSkuVo>> list() {
+        return new RespVo<>(SpringBeanUtils.copy(shopSkuService.list(),ShopSkuVo.class));
     }
 
     @GetMapping("exception")

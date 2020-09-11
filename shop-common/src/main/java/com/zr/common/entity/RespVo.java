@@ -18,4 +18,10 @@ public class RespVo<T> {
     private T content;
     //返回提示信息
     private String msg;
+
+    public RespVo(T content) {
+        this.res = true;
+        this.content = content;
+        this.msg = "操作成功";
+    }
 }

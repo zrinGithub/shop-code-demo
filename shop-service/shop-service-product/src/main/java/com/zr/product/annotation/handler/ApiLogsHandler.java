@@ -27,14 +27,13 @@ public class ApiLogsHandler {
     }
 
     @Around(value = "apiLog()")
-    public void printApiLogs(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object printApiLogs(ProceedingJoinPoint joinPoint) throws Throwable {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //类名
         String className = joinPoint.getTarget().getClass().getName();
         //方法
         String methodName = joinPoint.getSignature().getName();
         //参数
-        String argsStr = JSONObject.toJSONString(joinPoint.getArgs());
         long startTime = System.currentTimeMillis();
         Object res = joinPoint.proceed();
         long endTime = System.currentTimeMillis();
@@ -43,5 +42,6 @@ public class ApiLogsHandler {
         log.info("      method:{}", methodName);
         log.info("      useTime:{}", endTime - startTime);
         log.info("      response:{}", JSONObject.toJSONString(res));
+        return res;
     }
 }

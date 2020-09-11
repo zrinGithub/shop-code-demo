@@ -17,11 +17,9 @@
             <artifactId>shop-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!-- 需要使用产商品的一些服务 -->
         <dependency>
-            <groupId>com.zr</groupId>
-            <artifactId>shop-service-product-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
     </dependencies>
 </project>

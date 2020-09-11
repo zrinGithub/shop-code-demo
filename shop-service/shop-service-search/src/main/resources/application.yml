@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: search-service
+  jackson:
+    # 全局设置@JsonFormat的格式pattern
+    date-format: yyyy-MM-dd HH:mm:ss
+    # 当地时区
+    locale: zh
+    # 设置全局时区
+    time-zone: GMT+8
+
+server:
+  port: 8004
+eureka:
+  client:
+    service-url:
+      defaultZone: http://test:123456@127.0.0.1:8000/eureka/
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
