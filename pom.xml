@@ -21,6 +21,7 @@
         <module>shop-common-db</module>
         <module>shop-service</module>
         <module>shop-service-api</module>
+        <module>shop-gateway</module>
     </modules>
 
     <properties>
