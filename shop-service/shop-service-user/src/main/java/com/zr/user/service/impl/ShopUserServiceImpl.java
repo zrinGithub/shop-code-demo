@@ -2,6 +2,7 @@ package com.zr.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zr.common.entity.RespVo;
 import com.zr.common.util.JWTUtil;
 import com.zr.user.entity.ShopUser;
 import com.zr.user.mapper.ShopUserMapper;
@@ -10,6 +11,8 @@ import com.zr.user.service.IShopUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -23,7 +26,7 @@ import java.util.UUID;
 @Service
 public class ShopUserServiceImpl extends ServiceImpl<ShopUserMapper, ShopUser> implements IShopUserService {
     @Override
-    public boolean login(LoginRequest request) {
+    public RespVo<String> login(LoginRequest request, HttpServletResponse response) {
         //查询用户数据库信息
         QueryWrapper<ShopUser> wrapper = new QueryWrapper<>();
         wrapper.eq("USER_NAME", request.getUserName());
@@ -37,13 +40,17 @@ public class ShopUserServiceImpl extends ServiceImpl<ShopUserMapper, ShopUser> i
             userJwt.put("role", "admin");
             String jwt = JWTUtil.createJWT(UUID.randomUUID().toString().replace("-", ""),
                     "用户信息", null, userJwt);
+
             //保存令牌信息到cookie
+            Cookie cookie = new Cookie("Authorization", jwt);
+            cookie.setDomain("localhost");
+            cookie.setPath("/");
+            response.addCookie(cookie);
 
-            //把令牌作为参数返回给用户
-
-            return true;
+            //也可以把令牌作为参数返回给用户
+            return new RespVo<>(jwt);
         } else
-            return false;
+            return new RespVo<>(false, "用户名或密码错误", "操作失败");
     }
 
     @Override

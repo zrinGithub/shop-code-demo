@@ -12,11 +12,6 @@
     <artifactId>shop-common</artifactId>
 
     <dependencies>
-        <!--web起步依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!-- redis 使用-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

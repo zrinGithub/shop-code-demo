@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -28,11 +29,8 @@ public class ShopUserController {
 
     @PostMapping("login")
     @ApiOperation("用户登录")
-    private RespVo<String> login(@Valid @RequestBody LoginRequest request) {
-        if (userService.login(request))
-            return new RespVo<>("登录成功");
-        else
-            return new RespVo<>(false, "用户名或密码错误", "操作失败");
+    private RespVo<String> login(@Valid @RequestBody LoginRequest request, HttpServletResponse response) {
+        return userService.login(request, response);
     }
 
     @PostMapping("add")

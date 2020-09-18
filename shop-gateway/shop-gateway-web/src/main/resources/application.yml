@@ -25,12 +25,12 @@ spring:
                 key-resolver: "#{@ipKeyResolver}"
                 redis-rate-limiter.replenishRate: 1
                 redis-rate-limiter.burstCapacity: 4
-          - id: shop_user_route
-            uri: lb://user-service
-            predicates:
-              - Path=/user-service/**
-            filters:
-              - StripPrefix=1
+        - id: shop_user_route
+          uri: lb://user-service
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - StripPrefix=1
 #        #商品微服务
 #        - id: shop_product_route
 #          uri: lb://product-service
