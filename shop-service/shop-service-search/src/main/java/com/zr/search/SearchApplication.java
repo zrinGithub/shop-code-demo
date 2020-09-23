@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients(basePackages = {"com.zr.product.client"})
+@EnableFeignClients(basePackages = {"com.zr.*.client"})
 @EnableSwagger2
 public class SearchApplication {
     public static void main(String[] args) {

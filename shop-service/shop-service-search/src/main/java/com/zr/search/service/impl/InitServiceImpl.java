@@ -15,8 +15,6 @@ import javax.annotation.Resource;
 @Service
 public class InitServiceImpl implements InitService {
 
-    @Resource
-    private ElasticsearchTemplate templates;
 
     @Override
     public void createMappingAndIndex() {

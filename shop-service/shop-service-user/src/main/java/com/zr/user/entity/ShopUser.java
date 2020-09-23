@@ -37,25 +37,21 @@ public class ShopUser extends Model<ShopUser> implements Serializable {
      */
     private String password;
     /**
+     * 创建者
+     */
+    private String createBy;
+    /**
      * 创建时间（格式：yyyy-MM-dd HH:mm:ss）
      */
     private Date createTime;
     /**
-     * 上架时间（格式：yyyy-MM-dd HH:mm:ss）
+     * 修改者
      */
-    private Date listTime;
-    /**
-     * 下架时间（格式：yyyy-MM-dd HH:mm:ss）
-     */
-    private Date delistTime;
+    private String modifyBy;
     /**
      * 修改时间（格式：yyyy-MM-dd HH:mm:ss）
      */
     private Date modifyTime;
-    /**
-     * 修改者
-     */
-    private String modifyBy;
     /**
      * 逻辑删除标记（0：正常，1：已删除）
      */

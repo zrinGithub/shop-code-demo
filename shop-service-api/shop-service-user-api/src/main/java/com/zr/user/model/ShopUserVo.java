@@ -43,15 +43,10 @@ public class ShopUserVo  implements Serializable {
     @ApiModelProperty("创建时间（格式：yyyy-MM-dd HH:mm:ss）")
     private Date createTime;
     /**
-     * 上架时间（格式：yyyy-MM-dd HH:mm:ss）
+     * 创建者
      */
-    @ApiModelProperty("上架时间（格式：yyyy-MM-dd HH:mm:ss）")
-    private Date listTime;
-    /**
-     * 下架时间（格式：yyyy-MM-dd HH:mm:ss）
-     */
-    @ApiModelProperty("下架时间（格式：yyyy-MM-dd HH:mm:ss）")
-    private Date delistTime;
+    @ApiModelProperty("创建者")
+    private String createBy;
     /**
      * 修改时间（格式：yyyy-MM-dd HH:mm:ss）
      */

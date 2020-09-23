@@ -71,7 +71,8 @@ public class AuthorizationFilter implements GlobalFilter, Ordered {
             //响应空数据
             return response.setComplete();
         }
-        //对有效的令牌放行
+        //对有效的令牌放行，并且把令牌放在头文件里面，这样可以传递给后面的服务
+        request.mutate().header(AUTHORIZE_TOKEN, token);
         return chain.filter(exchange);
     }
 

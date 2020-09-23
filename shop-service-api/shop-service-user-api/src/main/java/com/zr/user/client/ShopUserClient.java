@@ -2,6 +2,8 @@ package com.zr.user.client;
 
 import com.zr.common.entity.RespVo;
 import com.zr.user.model.LoginRequest;
+import com.zr.user.model.QueryUserRequest;
+import com.zr.user.model.ShopUserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -26,4 +28,8 @@ public interface ShopUserClient {
     @PostMapping("/shopuser/add")
     @ApiOperation("添加用户")
     RespVo<String> add(@RequestBody LoginRequest request);
+
+    @PostMapping("/shopuser/query")
+    @ApiOperation("精确查询用户信息")
+    RespVo<ShopUserVo> queryUserInfo(@RequestBody QueryUserRequest request);
 }

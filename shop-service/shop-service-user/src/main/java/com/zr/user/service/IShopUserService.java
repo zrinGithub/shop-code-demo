@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zr.common.entity.RespVo;
 import com.zr.user.entity.ShopUser;
 import com.zr.user.model.LoginRequest;
+import com.zr.user.model.QueryUserRequest;
+import com.zr.user.model.ShopUserVo;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,4 +19,6 @@ public interface IShopUserService extends IService<ShopUser> {
     RespVo<String> login(LoginRequest request, HttpServletResponse response);
 
     boolean add(LoginRequest request);
+
+    ShopUserVo queryUserInfo(QueryUserRequest request);
 }

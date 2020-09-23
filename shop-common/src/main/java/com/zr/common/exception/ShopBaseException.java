@@ -7,7 +7,7 @@ package com.zr.common.exception;
  * @author zhangr
  * 2020/9/7 11:20
  */
-public class ShopBaseException extends Exception {
+public class ShopBaseException extends RuntimeException {
     public ShopBaseException(String errMsg) {
         super(errMsg);
     }

@@ -4,10 +4,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zr.common.entity.RespVo;
 import com.zr.common.util.JWTUtil;
+import com.zr.common.util.SpringBeanUtils;
 import com.zr.user.entity.ShopUser;
 import com.zr.user.mapper.ShopUserMapper;
 import com.zr.user.model.LoginRequest;
+import com.zr.user.model.QueryUserRequest;
+import com.zr.user.model.ShopUserVo;
 import com.zr.user.service.IShopUserService;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -61,5 +66,15 @@ public class ShopUserServiceImpl extends ServiceImpl<ShopUserMapper, ShopUser> i
         shopUser.setPassword(DigestUtils.md5DigestAsHex(request.getPassword().getBytes()));
         shopUser.setUserId(UUID.randomUUID().toString().replace("-", ""));
         return baseMapper.insert(shopUser) == 1;
+    }
+
+    @Override
+    public ShopUserVo queryUserInfo(QueryUserRequest request) {
+        QueryWrapper<ShopUser> wrapper = new QueryWrapper<>();
+        if (StringUtils.isNotBlank(request.getUserName()))
+            wrapper.eq("USER_NAME", request.getUserName());
+        if (StringUtils.isNotBlank(request.getUserName()))
+            wrapper.eq("USER_ID", request.getUserId());
+        return SpringBeanUtils.copyProperties(baseMapper.selectOne(wrapper), ShopUserVo.class);
     }
 }

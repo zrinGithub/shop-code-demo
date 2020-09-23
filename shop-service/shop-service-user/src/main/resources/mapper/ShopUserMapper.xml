@@ -7,8 +7,7 @@
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		<result property="password" column="PASSWORD" jdbcType="VARCHAR"/>
 		<result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
-		<result property="listTime" column="LIST_TIME" jdbcType="TIMESTAMP"/>
-		<result property="delistTime" column="DELIST_TIME" jdbcType="TIMESTAMP"/>
+		<result property="createBy" column="CREATE_BY" jdbcType="VARCHAR"/>
 		<result property="modifyTime" column="MODIFY_TIME" jdbcType="TIMESTAMP"/>
 		<result property="modifyBy" column="MODIFY_BY" jdbcType="VARCHAR"/>
 		<result property="deletedFlag" column="DELETED_FLAG" jdbcType="OTHER"/>
