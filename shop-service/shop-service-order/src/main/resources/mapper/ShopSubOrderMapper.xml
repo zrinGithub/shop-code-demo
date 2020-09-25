@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.order.mapper.ShopSubOrderMapper">
+	<!--开启二级缓存-->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+	<resultMap id="BaseResultMap" type="com.zr.order.entity.ShopSubOrder">
+		<id column="PK_ID" property="pkId" />
+		<result column="SUB_ORDER_ID" property="subOrderId" />
+		<result column="ORDER_ID" property="orderId" />
+		<result column="STORE_ID" property="storeId" />
+		<result column="PRODUCT_PART_FEE" property="productPartFee" />
+		<result column="POST_PART_FEE" property="postPartFee" />
+		<result column="PAY_PART_AMOUNT" property="payPartAmount" />
+		<result column="POST_TIME" property="postTime" />
+		<result column="FINISH_TIME" property="finishTime" />
+		<result column="CLOSE_TIME" property="closeTime" />
+		<result column="BUYER_REMARK" property="buyerRemark" />
+		<result column="SHIPPING_NAME" property="shippingName" />
+		<result column="SHIPPING_CODE" property="shippingCode" />
+		<result column="SHIPPING_STATUS" property="shippingStatus" />
+		<result column="SUB_ORDER_STATUS" property="subOrderStatus" />
+		<result column="CST_ID" property="cstId" />
+		<result column="CST_NAME" property="cstName" />
+		<result column="RECEIVER_NAME" property="receiverName" />
+		<result column="RECEIVER_PHONE" property="receiverPhone" />
+		<result column="RECEIVER_ADDR" property="receiverAddr" />
+		<result column="CREATE_BY" property="createBy" />
+		<result column="CREATE_TIME" property="createTime" />
+		<result column="MODIFY_BY" property="modifyBy" />
+		<result column="MODIFY_TIME" property="modifyTime" />
+		<result column="DELETED_FLAG" property="deletedFlag" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        PK_ID AS pkId, SUB_ORDER_ID AS subOrderId, ORDER_ID AS orderId, STORE_ID AS storeId, PRODUCT_PART_FEE AS productPartFee, POST_PART_FEE AS postPartFee, PAY_PART_AMOUNT AS payPartAmount, POST_TIME AS postTime, FINISH_TIME AS finishTime, CLOSE_TIME AS closeTime, BUYER_REMARK AS buyerRemark, SHIPPING_NAME AS shippingName, SHIPPING_CODE AS shippingCode, SHIPPING_STATUS AS shippingStatus, SUB_ORDER_STATUS AS subOrderStatus, CST_ID AS cstId, CST_NAME AS cstName, RECEIVER_NAME AS receiverName, RECEIVER_PHONE AS receiverPhone, RECEIVER_ADDR AS receiverAddr, CREATE_BY AS createBy, CREATE_TIME AS createTime, MODIFY_BY AS modifyBy, MODIFY_TIME AS modifyTime, DELETED_FLAG AS deletedFlag
+    </sql>
+</mapper>

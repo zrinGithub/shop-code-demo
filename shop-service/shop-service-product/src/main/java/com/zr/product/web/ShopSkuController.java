@@ -8,9 +8,7 @@ import com.zr.product.service.IShopSkuService;
 import com.zr.product.model.ShopSkuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -34,7 +32,21 @@ public class ShopSkuController {
     @ApiOperation("查询")
     @ApiLogs
     public RespVo<List<ShopSkuVo>> list() {
-        return new RespVo<>(SpringBeanUtils.copy(shopSkuService.list(),ShopSkuVo.class));
+        return new RespVo<>(SpringBeanUtils.copy(shopSkuService.list(), ShopSkuVo.class));
+    }
+
+    @GetMapping("get/{skuId}")
+    @ApiOperation("根据id查询")
+    @ApiLogs
+    public RespVo<ShopSkuVo> get(@PathVariable("skuId") String skuId) {
+        return new RespVo<>(SpringBeanUtils.copyProperties(shopSkuService.getById(skuId), ShopSkuVo.class));
+    }
+
+    @GetMapping("listByIds")
+    @ApiOperation("根据id列表查询")
+    @ApiLogs
+    public RespVo<List<ShopSkuVo>> listByIds(@RequestBody List<String> skuIds) {
+        return new RespVo<>(SpringBeanUtils.copy(shopSkuService.getByIds(skuIds), ShopSkuVo.class));
     }
 
     @GetMapping("exception")

@@ -59,7 +59,7 @@
                     <!-- 数据源配置，( **必配** ) -->
                     <dataSource>
                         <driverName>com.mysql.jdbc.Driver</driverName>
-                        <url>jdbc:mysql://localhost:3306/shop-product?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>
+                        <url>jdbc:mysql://localhost:3306/shop_order?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>
                         <username>root</username>
                         <password>123456</password>
                     </dataSource>
@@ -78,9 +78,9 @@
                         <!--自定义超类-->
                         <!--<superServiceClass>net.hyman.base.BaseService</superServiceClass>-->
                         <!-- 要包含的表 与exclude 二选一配置-->
-                        <include>
-                            <property>shop_category</property>
-                        </include>
+<!--                        <include>-->
+<!--                            <property>shop_category</property>-->
+<!--                        </include>-->
                         <!-- 要排bean除的表 -->
                         <!--<exclude>-->
                         <!--<property>order</property>-->
@@ -88,7 +88,7 @@
                     </strategy>
                     <packageInfo>
                         <!-- 父级包名称，如果不写，下面的service等就需要写全包名(默认com.baomidou) -->
-                        <parent>com.zr.product</parent>
+                        <parent>com.zr.order</parent>
                         <!--service包名(默认service)-->
                         <service>service</service>
                         <!--serviceImpl包名(默认service.impl)-->

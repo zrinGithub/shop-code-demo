@@ -1,27 +1,25 @@
-package com.zr.product.entity;
-
+package com.zr.order.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * <p>
- * 类别表
+ * 订单明细表
  * </p>
  *
  * @author zhangr
- * @since 2020-09-02
+ * @since 2020-09-24
  */
-@TableName("shop_category")
+@TableName("shop_order_item")
 @Data
-public class ShopCategory extends Model<ShopCategory> {
+public class ShopOrderItem extends Model<ShopOrderItem> {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,38 +31,44 @@ public class ShopCategory extends Model<ShopCategory> {
 	private Long pkId;
 
 	/**
-	 * 类别ID
+	 * 订单明细 ID
 	 */
-	@TableField(value="CATEGORY_ID")
-	private String categoryId;
+	@TableField(value="ORDER_ITEM_ID")
+	private String orderItemId;
 
 	/**
-	 * 类别名称
+	 * 订单 ID
 	 */
-	@TableField(value="CATEGORY_NAME")
-	private String categoryName;
+	@TableField(value="ORDER_ID")
+	private String orderId;
 
 	/**
-	 * 类别等级
+	 * 子订单 ID
 	 */
-	@TableField(value="CATEGORY_LEVEL")
-	private Integer categoryLevel;
+	@TableField(value="SUB_ORDER_ID")
+	private String subOrderId;
 
 	/**
-	 * 父ID（一级分类的 PARENT_ID = 0）
+	 * SKU ID
 	 */
-	@TableField(value="PARENT_ID")
-	private String parentId;
+	@TableField(value="SKU_ID")
+	private String skuId;
 
 	/**
-	 * 排序
+	 * 购买数量
 	 */
-	private Integer sort;
+	private Integer num;
 
 	/**
-	 * 备注
+	 * 单价,单位：分
 	 */
-	private String remark;
+	private Integer price;
+
+	/**
+	 * 总金额,单位：分
+	 */
+	@TableField(value="PRODUCT_FEE")
+	private Integer productFee;
 
 	/**
 	 * 创建者
@@ -73,28 +77,22 @@ public class ShopCategory extends Model<ShopCategory> {
 	private String createBy;
 
 	/**
-	 * 创建时间
+	 * 创建日期（格式：yyyy-MM-dd HH:mm:ss）
 	 */
 	@TableField(value="CREATE_TIME")
 	private Date createTime;
 
 	/**
-	 * 修改者
+	 * 最后修改人
 	 */
 	@TableField(value="MODIFY_BY")
 	private String modifyBy;
 
 	/**
-	 * 修改时间
+	 * 修改日期（格式：yyyy-MM-dd HH:mm:ss）
 	 */
 	@TableField(value="MODIFY_TIME")
 	private Date modifyTime;
-
-	/**
-	 * 状态，0禁用，1启用
-	 */
-	@TableField(value="CATEGORY_STATUS")
-	private Integer categoryStatus;
 
 	/**
 	 * 逻辑删除标记（0：正常，1：已删除）

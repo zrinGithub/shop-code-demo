@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.order.mapper.ShopOrderMapper">
+	<!--开启二级缓存-->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+	<resultMap id="BaseResultMap" type="com.zr.order.entity.ShopOrder">
+		<id column="PK_ID" property="pkId" />
+		<result column="ORDER_ID" property="orderId" />
+		<result column="PRODUCT_FEE" property="productFee" />
+		<result column="POST_FEE" property="postFee" />
+		<result column="PAY_AMOUNT" property="payAmount" />
+		<result column="PAY_TYPE" property="payType" />
+		<result column="PAY_STATUS" property="payStatus" />
+		<result column="ORDER_STATUS" property="orderStatus" />
+		<result column="PAY_TIME" property="payTime" />
+		<result column="POST_TIME" property="postTime" />
+		<result column="FINISH_TIME" property="finishTime" />
+		<result column="CLOSE_TIME" property="closeTime" />
+		<result column="BUYER_REMARK" property="buyerRemark" />
+		<result column="CST_ID" property="cstId" />
+		<result column="CST_NAME" property="cstName" />
+		<result column="RECEIVER_NAME" property="receiverName" />
+		<result column="RECEIVER_PHONE" property="receiverPhone" />
+		<result column="RECEIVER_ADDR" property="receiverAddr" />
+		<result column="CREATE_BY" property="createBy" />
+		<result column="CREATE_TIME" property="createTime" />
+		<result column="MODIFY_BY" property="modifyBy" />
+		<result column="MODIFY_TIME" property="modifyTime" />
+		<result column="DELETED_FLAG" property="deletedFlag" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        PK_ID AS pkId, ORDER_ID AS orderId, PRODUCT_FEE AS productFee, POST_FEE AS postFee, PAY_AMOUNT AS payAmount, PAY_TYPE AS payType, PAY_STATUS AS payStatus, ORDER_STATUS AS orderStatus, PAY_TIME AS payTime, POST_TIME AS postTime, FINISH_TIME AS finishTime, CLOSE_TIME AS closeTime, BUYER_REMARK AS buyerRemark, CST_ID AS cstId, CST_NAME AS cstName, RECEIVER_NAME AS receiverName, RECEIVER_PHONE AS receiverPhone, RECEIVER_ADDR AS receiverAddr, CREATE_BY AS createBy, CREATE_TIME AS createTime, MODIFY_BY AS modifyBy, MODIFY_TIME AS modifyTime, DELETED_FLAG AS deletedFlag
+    </sql>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.order.mapper.ShopOrderItemMapper">
+	<!--开启二级缓存-->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+	<resultMap id="BaseResultMap" type="com.zr.order.entity.ShopOrderItem">
+		<id column="PK_ID" property="pkId" />
+		<result column="ORDER_ITEM_ID" property="orderItemId" />
+		<result column="ORDER_ID" property="orderId" />
+		<result column="SUB_ORDER_ID" property="subOrderId" />
+		<result column="SKU_ID" property="skuId" />
+		<result column="NUM" property="num" />
+		<result column="PRICE" property="price" />
+		<result column="PRODUCT_FEE" property="productFee" />
+		<result column="CREATE_BY" property="createBy" />
+		<result column="CREATE_TIME" property="createTime" />
+		<result column="MODIFY_BY" property="modifyBy" />
+		<result column="MODIFY_TIME" property="modifyTime" />
+		<result column="DELETED_FLAG" property="deletedFlag" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        PK_ID AS pkId, ORDER_ITEM_ID AS orderItemId, ORDER_ID AS orderId, SUB_ORDER_ID AS subOrderId, SKU_ID AS skuId, NUM AS num, PRICE AS price, PRODUCT_FEE AS productFee, CREATE_BY AS createBy, CREATE_TIME AS createTime, MODIFY_BY AS modifyBy, MODIFY_TIME AS modifyTime, DELETED_FLAG AS deletedFlag
+    </sql>
+</mapper>
